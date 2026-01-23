@@ -296,23 +296,115 @@ a {
   letter-spacing: 0;
 }
 
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 11px 78.5px;
+  padding: 14px 56px;
   border-radius: 999px;
-  border: none;
 
   background-color: #ffffff;
   color: #111111;
 
-  font-family: Inter;
+  font-family: Actay;
+  font-size: 20px;
   font-weight: 400;
-  font-size: 26px;
   letter-spacing: 0;
-  font-style: Regular;
+
+  border: 2px solid #ffffff;
   cursor: pointer;
   transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.btn:active {
+  background-color: transparent;
+  color: #ffffff;
+  transform: translateY(1px);
+}
+
+/* modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 1000;
+
+  padding: 30px;
+  overflow: auto;
+}
+
+.modal.is-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.modal__content {
+  position: relative;
+
+  width: 993px;
+  max-width: 100%;
+  max-height: calc(100vh - 60px);
+
+  padding: 95px 61px;
+  border-radius: 36px;
+
+  background: var(--wh);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+.modal__close {
+  position: absolute;
+  right: 17px;
+  top: 20px;
+
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+
+  font-size: 40px;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.modal__close:hover {
+  opacity: 0.65;
+}
+
+.modal__body {
+  width: 100%;
+  max-height: calc(100vh - 260px);
+  overflow: auto;
+}
+
+.modal__text {
+  margin: 0;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 140%;
+  text-align: center;
 }
