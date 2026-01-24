@@ -439,7 +439,8 @@ a {
   max-width: 100%;
   max-height: calc(100vh - 60px);
 
-  padding: 95px 61px;
+  padding: 95px 52px;
+  padding-bottom: 95px;
   border-radius: 36px;
 
   background: var(--wh);
