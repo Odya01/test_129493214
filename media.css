@@ -1,15 +1,165 @@
 @media (max-width: 1800px) {}
 
-@media (max-width: 1000px) {
-  .burger {
-    display: block;
+@media (max-width: 1200px) {}
+
+@media (max-width: 1200px) {
+  body::before {
+    background-size: cover;
   }
 
-  .nav__item {
+  .container {
+    padding: 0 15px;
+  }
+
+  /*  */
+  .header {
+    padding: 28px 0 33px 0;
+  }
+
+  .header__nav {
     display: none;
   }
+
+  .header__action {
+    display: none;
+  }
+
+  .header__burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 0;
+  }
+
+  .sec__container {
+    padding: 0;
+  }
+
+  .sec__map {
+    overflow: hidden;
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 12px;
+    padding-right: 12px;
+    padding-left: 0px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  .sec__points {
+    padding-left: 15px;
+
+    position: static;
+    touch-action: pan-y;
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    transition: 0.3s ease;
+    transform: translateX(0);
+  }
+
+  .sec__point {
+    box-sizing: border-box;
+
+    position: static;
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .sec__heading {
+    font-size: 35px;
+    margin-bottom: 22px;
+    letter-spacing: 2px;
+  }
+
+  .sec__card {
+    width: 100%;
+    max-width: 500px;
+    padding: 39px 18px;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 22px;
+  }
+
+  .sec__card::before {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: inherit;
+    filter: blur(0px);
+    z-index: -1;
+  }
+
+  .sec__controls {
+    display: flex;
+  }
+
+  .modal__content {
+    padding: 58px 17px 41px 17px;
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+  }
+
+  .modal {
+    padding: 50px 15px;
+    height: 100%;
+  }
+
+  .modal__close {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    top: 10px;
+  }
+
+  .sec__road {
+    display: none;
+  }
+
+  .header__brand_title {
+    font-size: 20px;
+  }
+
+  .sec__badge {
+    width: 74px;
+    height: 76px;
+    font-size: 50px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 64px;
+    border-radius: 999px;
+    background-color: var(--wh);
+    color: var(--bl);
+    font-family: "Inter";
+    font-size: 21px;
+    font-weight: 400;
+    letter-spacing: 0;
+    border: 2px solid var(--wh);
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .modal__body {
+    padding-right: 10px;
+    max-height: calc(100vh - 200px);
+  }
+
+  .modal__body::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .modal__body::-webkit-scrollbar-thumb {
+    border: 2px solid transparent;
+  }
 }
-
-@media (max-width: 1800px) {}
-
-@media (max-width: 1800px) {}

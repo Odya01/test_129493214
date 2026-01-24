@@ -49,6 +49,62 @@
             </svg>
           </span>
         </a>
+
+        <button class="header__burger" type="button" data-menu-open>
+          <span class="header__burger_line"></span>
+          <span class="header__burger_line"></span>
+          <span class="header__burger_line"></span>
+        </button>
+      </div>
+
+      <div class="mobile_menu" data-menu>
+        <div class="mobile_menu__overlay" data-menu-close></div>
+
+        <div class="mobile_menu__panel">
+          <div class="mobile_menu__heading">
+            <a class="header__brand" href="#">
+              <span class="header__brand_title">Epc</span>
+              <span class="header__brand_title">Hunters</span>
+            </a>
+
+            <div class="mobile_menu__close-block">
+              <a class="mobile_menu__link" href="#">Loren Ipsum</a>
+              <button class="mobile_menu__close" type="button" data-menu-close>
+                ✕
+              </button>
+            </div>
+          </div>
+
+          <ul class="mobile_menu__list list-reset">
+            <li class="mobile_menu__item">
+              <a class="mobile_menu__link" href="#">Loren Ipsum</a>
+            </li>
+            <li class="mobile_menu__item">
+              <a class="mobile_menu__link" href="#">Loren Ipsum</a>
+            </li>
+            <li class="mobile_menu__item">
+              <a class="mobile_menu__link" href="#">Loren Ipsum</a>
+            </li>
+          </ul>
+
+          <a class="mobile_menu__action" href="#">
+            <span class="mobile_menu__action_text">LOREN IPSUM</span>
+            <span class="mobile_menu__action_icon">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.9912 0H12V6.0088H11.2489V1.28509L0.528117 12L0 11.4719L10.7149 0.7511H5.9912V0Z"
+                  fill="#111111"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
       </div>
     </header>
 
@@ -58,6 +114,32 @@
           <h1 class="sec__heading">Loren Ipsum</h1>
 
           <div class="sec__map">
+            <img
+              class="sec__road sec__road--1"
+              src="images/road-1.svg"
+              alt=""
+            />
+            <img
+              class="sec__road sec__road--2"
+              src="images/road-2.svg"
+              alt=""
+            />
+            <img
+              class="sec__road sec__road--3"
+              src="images/road-3.svg"
+              alt=""
+            />
+            <img
+              class="sec__road sec__road--4"
+              src="images/road-4.svg"
+              alt=""
+            />
+            <img
+              class="sec__road sec__road--5"
+              src="images/road-5.svg"
+              alt=""
+            />
+
             <ol class="sec__points list-reset">
               <li class="sec__point sec__point--1">
                 <div class="sec__card">
@@ -115,12 +197,66 @@
             </ol>
           </div>
 
+          <div class="sec__controls">
+            <div class="cont">
+              <button
+                class="sec__control_btn sec__control_btn--prev"
+                type="button"
+                data-slider-prev
+              >
+                <span>
+                  <svg
+                    width="17"
+                    height="10"
+                    viewBox="0 0 17 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.5 5.00003L0.5 5.00003M0.5 5.00003L6.5 0.500031M0.5 5.00003L6.5 9.50003"
+                      stroke="#F6FFD2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span class="sec__control_text">Loren ipsum</span>
+              </button>
+            </div>
+
+            <div class="cont">
+              <button
+                class="sec__control_btn sec__control_btn--next"
+                type="button"
+                data-slider-next
+              >
+                <span class="sec__control_text">Loren ipsum</span>
+                <span>
+                  <svg
+                    width="17"
+                    height="10"
+                    viewBox="0 0 17 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.5 5.00003L16.5 5.00003M16.5 5.00003L10.5 9.50003M16.5 5.00003L10.5 0.500031"
+                      stroke="#F6FFD2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+
           <button class="btn" type="button" data-modal-open="info">INFO</button>
         </div>
       </section>
 
       <div class="modal" data-modal="info">
-        <div class="modal__overlay"></div>
+        <div class="modal__overlay" data-modal-close></div>
 
         <div class="modal__content">
           <button class="modal__close" type="button" data-modal-close>✕</button>
@@ -147,6 +283,6 @@
       </div>
     </main>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
