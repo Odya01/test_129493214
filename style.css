@@ -312,6 +312,11 @@ a {
   background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  transition: .3s ease;
+}
+
+.sec__card:hover {
+  background: none;
 }
 
 .sec__card::before {
@@ -404,7 +409,9 @@ a {
 .modal {
   position: fixed;
   inset: 0;
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1000;
 
   padding: 30px;
@@ -412,22 +419,27 @@ a {
 
   opacity: 0;
   visibility: hidden;
-  transition: 0.3s ease;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal.is-open {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .modal__overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.is-open .modal__overlay {
+  opacity: 1;
 }
 
 .modal__content {
@@ -447,14 +459,16 @@ a {
   border: 2px solid rgba(255, 255, 255, 0.6);
   overflow: hidden;
 
-  transform: scale(0.96);
-  transition: 0.3s ease;
+  transform: scale(0.96) translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 
   z-index: 1;
 }
 
 .modal.is-open .modal__content {
-  transform: scale(1);
+  transform: scale(1) translateY(0);
+  opacity: 1;
 }
 
 .modal__close {
@@ -486,14 +500,56 @@ a {
   width: 100%;
   flex: 1 1 auto;
   overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
 
   padding-right: 18px;
-  scrollbar-gutter: stable;
   box-sizing: content-box;
 
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.55) rgba(0, 0, 0, 0.12);
-  scrollbar-gutter: stable both-edges;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal__body::-webkit-scrollbar {
+  display: none;
+}
+
+.modal__scrollbar {
+  position: absolute;
+  right: 6px;
+  top: 58px;
+  bottom: 41px;
+  width: 8px;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  z-index: 10;
+  display: none;
+  cursor: pointer;
+}
+
+.modal__scrollbar.is-active {
+  display: block;
+}
+
+.modal__scrollbar-thumb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 37px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 4px;
+  cursor: grab;
+  transition: background 0.2s ease;
+  pointer-events: auto;
+}
+
+.modal__scrollbar-thumb:active {
+  cursor: grabbing;
+}
+
+.modal__scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.7);
 }
 
 

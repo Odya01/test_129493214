@@ -47,6 +47,100 @@ if (openBtns.length && modals.length) {
     if (e.key !== "Escape") return;
     closeAllModals();
   });
+
+  // custom scrollbar
+  modals.forEach((modal) => {
+    const modalBody = modal.querySelector(".modal__body");
+    const scrollbar = modal.querySelector(".modal__scrollbar");
+    const scrollbarThumb = modal.querySelector(".modal__scrollbar-thumb");
+
+    if (!modalBody || !scrollbar || !scrollbarThumb) return;
+
+    const updateScrollbar = () => {
+      const { scrollHeight, clientHeight, scrollTop } = modalBody;
+      const scrollbarHeight = scrollbar.clientHeight;
+      const thumbHeight = 37;
+
+      if (scrollHeight > clientHeight) {
+        scrollbar.classList.add("is-active");
+
+        const maxThumbTop = scrollbarHeight - thumbHeight;
+        const scrollRatio = scrollTop / (scrollHeight - clientHeight);
+        const thumbTop = Math.min(scrollRatio * maxThumbTop, maxThumbTop);
+
+        scrollbarThumb.style.top = `${thumbTop}px`;
+      } else {
+        scrollbar.classList.remove("is-active");
+      }
+    };
+
+    modalBody.addEventListener("scroll", updateScrollbar);
+
+    const resizeObserver = new ResizeObserver(updateScrollbar);
+    resizeObserver.observe(modalBody);
+
+    let isDragging = false;
+    let startY = 0;
+    let startThumbTop = 0;
+
+    const onThumbMouseDown = (e) => {
+      isDragging = true;
+      startY = e.clientY;
+      startThumbTop = parseFloat(scrollbarThumb.style.top) || 0;
+      e.preventDefault();
+      e.stopPropagation();
+    };
+
+    const onMouseMove = (e) => {
+      if (!isDragging) return;
+      const deltaY = e.clientY - startY;
+      const scrollbarHeight = scrollbar.clientHeight;
+      const thumbHeight = 37;
+      const maxThumbTop = scrollbarHeight - thumbHeight;
+      const newThumbTop = Math.max(
+        0,
+        Math.min(startThumbTop + deltaY, maxThumbTop),
+      );
+
+      const { scrollHeight, clientHeight } = modalBody;
+      const maxScroll = scrollHeight - clientHeight;
+      const scrollRatio = newThumbTop / maxThumbTop;
+      modalBody.scrollTop = scrollRatio * maxScroll;
+    };
+
+    const onMouseUp = () => {
+      isDragging = false;
+    };
+
+    scrollbarThumb.addEventListener("mousedown", onThumbMouseDown);
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+
+    scrollbar.addEventListener("click", (e) => {
+      if (e.target === scrollbarThumb) return;
+      const rect = scrollbar.getBoundingClientRect();
+      const clickY = e.clientY - rect.top;
+      const scrollbarHeight = scrollbar.clientHeight;
+      const thumbHeight = 37;
+      const thumbCenter = clickY - thumbHeight / 2;
+      const maxThumbTop = scrollbarHeight - thumbHeight;
+      const newThumbTop = Math.max(0, Math.min(thumbCenter, maxThumbTop));
+
+      const { scrollHeight, clientHeight } = modalBody;
+      const maxScroll = scrollHeight - clientHeight;
+      const scrollRatio = newThumbTop / maxThumbTop;
+      modalBody.scrollTop = scrollRatio * maxScroll;
+    });
+
+    const observer = new MutationObserver(() => {
+      if (modal.classList.contains("is-open")) {
+        setTimeout(updateScrollbar, 100);
+      }
+    });
+    observer.observe(modal, { attributes: true, attributeFilter: ["class"] });
+
+    updateScrollbar();
+  });
 }
 
 // burger menu
